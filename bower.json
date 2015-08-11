@@ -1,0 +1,37 @@
+{
+  "name": "backbone-moment",
+  "version": "0.2.0",
+  "description": "Adds a moment.js getter/setter to Backbone.Model",
+  "main": "./dist/backbone-moment.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulfalgout/backbone-moment.git"
+  },
+  "keywords": [
+    "backbone",
+    "backbonejs",
+    "moment",
+    "momentjs"
+  ],
+  "author": "Paul Falgout <paul@otterball.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paulfalgout/backbone-moment/issues"
+  },
+  "homepage": "https://github.com/paulfalgout/backbone-moment",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "^1.2.0",
+    "moment": "^2.0.0",
+    "underscore": "^1.8.0"
+  },
+  "authors": [
+    "paulfalgout <paul@otterball.com>"
+  ]
+}

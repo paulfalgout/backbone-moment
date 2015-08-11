@@ -1,6 +1,6 @@
 /**
  * backbone-moment - Adds a moment.js getter/setter to Backbone.Model
- * @version v0.1.0
+ * @version v0.2.0
  * @link https://github.com/paulfalgout/backbone-moment
  * @license MIT
  */
@@ -9,23 +9,38 @@
 })(this, function (_, moment, Backbone) {
   'use strict';
 
+  Backbone.__moment = moment;
+
   _.extend(Backbone.Model.prototype, {
-    _moment: moment,
-    moment: function moment(attr, val, opts) {
-      if (_.isUndefined(val)) {
-        return this.getMoment(attr, opts);
+    moment: function moment(attr, date, options) {
+      if (arguments.length === 1) {
+        return this.getMoment(attr);
       }
-      return this.setMoment.apply(this, arguments);
+      return this.setMoment(attr, date, options);
     },
     // override with whatever default format your endpoints expect
-    formatMoment: function formatMoment(attr, val) {
-      return this._moment(val).toUTC().format();
+    formatMoment: function formatMoment(attr, date) {
+      return Backbone.__moment(date).utc().format();
     },
-    setMoment: function setMoment(attr) {
-      return this.set(attr, this.formatMoment.apply(this, arguments));
+    setMoment: function setMoment(attr, date, options) {
+      var dateString = date;
+
+      // if not '', null or undefined
+      if (date || date === 0) {
+        dateString = this.formatMoment(attr, date, options);
+      }
+
+      return this.set(attr, dateString, options);
     },
     getMoment: function getMoment(attr) {
-      return this._moment(this.get(attr));
+      var date = this.get(attr);
+
+      // return '', null or undefined explicitly
+      if (!date && date !== 0) {
+        return date;
+      }
+
+      return Backbone.__moment(date);
     }
   });
 });
