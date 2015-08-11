@@ -1,6 +1,6 @@
 {
   "name": "backbone-moment",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Adds a moment.js getter/setter to Backbone.Model",
   "main": "./dist/backbone-moment.js",
   "scripts": {
@@ -59,7 +59,6 @@
     "run-sequence": "^1.0.2",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.7.0",
-    "underscore": "^1.8.3",
     "vinyl-source-stream": "^1.0.0"
   },
   "babelBoilerplateOptions": {
